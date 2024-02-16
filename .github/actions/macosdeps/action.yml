@@ -10,12 +10,12 @@ runs:
   using: 'composite'
   steps:
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
 
     - name: Remove spurious symlinks
       shell:  ${{inputs.shell}}
       run: sudo rm -f /usr/local/bin/2to3 /usr/local/bin/2to3-3.11
-      
+
     - name: Add custom Homebrew repos
       shell:  ${{inputs.shell}}
       run: brew tap pothosware/homebrew-pothos && brew update
@@ -24,7 +24,7 @@ runs:
       shell:  ${{inputs.shell}}
       run:  brew install --force --overwrite python@3.11
 
-    - name: Force-install of Python 3.12 
+    - name: Force-install of Python 3.12
       shell:  ${{inputs.shell}}
       run: |
         brew install --force --overwrite python@3.12
@@ -38,7 +38,7 @@ runs:
     - name: (Re) Install libsndfile
       shell: ${{inputs.shell}}
       run: brew reinstall libsndfile
-    
+
     - name: Install Volk
       shell: ${{inputs.shell}}
       run: brew install volk
@@ -46,23 +46,23 @@ runs:
     - name: Install JSON-C
       shell: ${{inputs.shell}}
       run: brew install json-c
-    
+
     - name: Install FFTW
       shell: ${{inputs.shell}}
       run: brew install fftw
-    
+
     - name: Install SoapySDR
       shell: ${{inputs.shell}}
       run: brew install soapysdr
-    
+
     - name: Install libxml2
       shell: ${{inputs.shell}}
       run: brew install libxml2
-    
+
     - name: Install portaudio
       shell: ${{inputs.shell}}
       run: brew install portaudio
-    
+
     - name: Install SoapySDR modules
       shell: ${{inputs.shell}}
       run: |
@@ -72,8 +72,8 @@ runs:
     - name: Install SDRPlay
       shell: ${{inputs.shell}}
       run: |
-        wget https://www.sdrplay.com/software/SDRplay_RSP_API-MacOSX-3.07.3.pkg
-        sudo installer -pkg SDRplay_RSP_API-MacOSX-3.07.3.pkg -target /
+        wget https://www.sdrplay.com/software/SDRplayAPI-macos-installer-universal-3.14.0.pkg
+        sudo installer -pkg SDRplayAPI-macos-installer-universal-3.14.0.pkg -target /
         # SoapySDRPlay3 from source
         git clone https://github.com/pothosware/SoapySDRPlay3
         cd SoapySDRPlay3
