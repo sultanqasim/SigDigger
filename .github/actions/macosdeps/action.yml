@@ -48,7 +48,6 @@ runs:
     - name: Install SoapySDR modules
       shell: ${{inputs.shell}}
       run: |
-        brew install python@3.12
         python3.12 -Im pip install setuptools
         brew install soapyrtlsdr soapyhackrf soapybladerf soapyairspy soapyredpitaya soapyiris limesuite soapyplutosdr
         brew install --head soapyuhd
