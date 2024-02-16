@@ -12,27 +12,9 @@ runs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
 
-    - name: Remove spurious symlinks
-      shell:  ${{inputs.shell}}
-      run: sudo rm -f /usr/local/bin/2to3 /usr/local/bin/2to3-3.11
-
     - name: Add custom Homebrew repos
       shell:  ${{inputs.shell}}
       run: brew tap pothosware/homebrew-pothos && brew update
-
-    - name: Force-install of Python 3.11
-      shell:  ${{inputs.shell}}
-      run:  brew install --force --overwrite python@3.11
-
-    - name: Force-install of Python 3.12
-      shell:  ${{inputs.shell}}
-      run: |
-        brew install --force --overwrite python@3.12
-        python3 -Im pip install setuptools
-
-    - name: Force-install of Node 18
-      shell:  ${{inputs.shell}}
-      run:  brew install --force --overwrite node@18
 
     # Reinstall step needed to fix the problem with @loader_path
     - name: (Re) Install libsndfile
