@@ -6,11 +6,6 @@ on:
   pull_request:
     branches: [ develop ]
   workflow_dispatch:
-    inputs:
-      debug_enabled:
-        description: 'Build and run interactive shell'
-        required: false
-        default: false
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
