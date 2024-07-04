@@ -402,8 +402,7 @@ SigDiggerHelpers::populateChannelCombo(
   int index = 0;
   combo->clear();
 
-  // TODO: determine channel count rather than hard coding
-  for (unsigned int i = 0; i < 4; i++) {
+  for (unsigned int i = 0; i < profile.getDevice().getChannelCount(); i++) {
     combo->addItem(QString::number(i));
 
     if (profile.getChannel() == i)

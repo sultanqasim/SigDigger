@@ -74,6 +74,9 @@ Source::Device::setDevice(const suscan_source_device_t *dev, unsigned int channe
 
     for (i = 0; i < info.samp_rate_count; ++i)
       this->rates.push_back(info.samp_rate_list[i]);
+
+    this->channelCount = info.channel_count;
+
     suscan_source_device_info_finalize(&info);
   }
 }

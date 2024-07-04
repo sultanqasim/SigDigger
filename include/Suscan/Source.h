@@ -94,6 +94,7 @@ namespace Suscan {
     std::vector<double> rates;
     SUFREQ freqMin = 0;
     SUFREQ freqMax = 0;
+    unsigned int channelCount;
 
     friend class Config;
 
@@ -239,6 +240,12 @@ namespace Suscan {
       if (this->instance == nullptr)
         return false;
       return suscan_source_device_is_available(this->instance);
+    }
+
+    unsigned int
+    getChannelCount() const
+    {
+      return this->channelCount;
     }
 
     std::vector<std::string>::const_iterator
