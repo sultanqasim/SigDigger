@@ -61,6 +61,12 @@ SoapySDRSourcePage::connectAll()
         SLOT(onAntennaChanged(int)));
 
   connect(
+        ui->channelCombo,
+        SIGNAL(activated(int)),
+        this,
+        SLOT(onChannelChanged(int)));
+
+  connect(
         ui->bandwidthSpinBox,
         SIGNAL(valueChanged(double)),
         this,
@@ -116,6 +122,12 @@ void
 SoapySDRSourcePage::refreshAntennas()
 {
   SigDiggerHelpers::populateAntennaCombo(*m_config, ui->antennaCombo);
+}
+
+void
+SoapySDRSourcePage::refreshChannels()
+{
+  SigDiggerHelpers::populateChannelCombo(*m_config, ui->channelCombo);
 }
 
 uint64_t
@@ -204,6 +216,7 @@ SoapySDRSourcePage::refreshUi()
     BLOCKSIG(ui->deviceCombo, setCurrentIndex(0));
 
   refreshAntennas();
+  refreshChannels();
 }
 
 void
@@ -303,6 +316,13 @@ SoapySDRSourcePage::onAntennaChanged(int)
 {
   m_config->setAntenna(
         ui->antennaCombo->currentText().toStdString());
+  emit changed();
+}
+
+void
+SoapySDRSourcePage::onChannelChanged(int index)
+{
+  m_config->setChannel(index);
   emit changed();
 }
 

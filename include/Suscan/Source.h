@@ -318,6 +318,7 @@ namespace Suscan {
   public:
     suscan_source_config_t *instance;
     std::string label() const;
+    unsigned int getChannel() const;
     SUFREQ getFreq() const;
     SUFREQ getLnbFreq() const;
     unsigned int getSampleRate() const;
@@ -348,6 +349,7 @@ namespace Suscan {
     const Source::Device &getDevice();
     enum suscan_source_format getFormat() const;
 
+    void setChannel(unsigned int);
     void setFreq(SUFREQ freq);
     void setLnbFreq(SUFREQ freq);
     void setBandwidth(SUFLOAT bw);
@@ -363,7 +365,7 @@ namespace Suscan {
     void setDecimation(unsigned int);
     void setDevice(const Source::Device &dev);
     void setGain(const std::string &, SUFLOAT);
-    void setAntenna(const std::string &);    
+    void setAntenna(const std::string &);
     void setInterface(std::string const &interface);
     void setParam(std::string const &key, std::string const &param);
     void clearParams();

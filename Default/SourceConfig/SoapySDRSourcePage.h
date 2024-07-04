@@ -48,6 +48,7 @@ namespace SigDigger {
     void populateDeviceCombo();
     bool shouldDisregardTweaks();
     void refreshAntennas();
+    void refreshChannels();
     void selectDeviceByIndex(int);
 
     void refreshUi();
@@ -71,6 +72,7 @@ namespace SigDigger {
     void onDeviceTweaksAccepted();
     void onBandwidthChanged(double);
     void onAntennaChanged(int);
+    void onChannelChanged(int);
     void onDeviceChanged(int);
 
   private:

@@ -261,6 +261,15 @@ Source::Config::serialize(void)
   return Object::wrap(obj);
 }
 
+unsigned int
+Source::Config::getChannel(void) const
+{
+  if (this->instance == nullptr)
+    return 0;
+
+  return suscan_source_config_get_channel(this->instance);
+}
+
 std::string
 Source::Config::getAntenna(void) const
 {
@@ -542,6 +551,15 @@ Source::Config::getPPM(void) const
     return 0.;
 
   return suscan_source_config_get_ppm(this->instance);
+}
+
+void
+Source::Config::setChannel(unsigned int chan)
+{
+  if (this->instance == nullptr)
+    return;
+
+  suscan_source_config_set_channel(this->instance, chan);
 }
 
 void

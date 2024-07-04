@@ -98,6 +98,9 @@ namespace SigDigger {
     static void populateAntennaCombo(
         Suscan::Source::Config &profile,
         QComboBox *combo);
+    static void populateChannelCombo(
+        Suscan::Source::Config &profile,
+        QComboBox *combo);
     void deserializePalettes();
 
     void pushLocalTZ();

@@ -394,6 +394,27 @@ SigDiggerHelpers::populateAntennaCombo(
     combo->setCurrentIndex(index);
 }
 
+void
+SigDiggerHelpers::populateChannelCombo(
+    Suscan::Source::Config &profile,
+    QComboBox *combo)
+{
+  int index = 0;
+  combo->clear();
+
+  // TODO: determine channel count rather than hard coding
+  for (unsigned int i = 0; i < 4; i++) {
+    combo->addItem(QString::number(i));
+
+    if (profile.getChannel() == i)
+      index = i;
+  }
+
+  combo->setEnabled(combo->count() > 0);
+  if (combo->count() > 0)
+    combo->setCurrentIndex(index);
+}
+
 const Palette *
 SigDiggerHelpers::getPalette(int index) const
 {
